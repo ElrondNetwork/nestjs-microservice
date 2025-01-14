@@ -4,26 +4,25 @@ import { BinaryUtils } from "./binary.utils";
 
 export class AddressUtils {
   static bech32Encode(publicKey: string) {
-    return Address.fromHex(publicKey).bech32();
+    return Address.newFromHex(publicKey).bech32();
   }
 
   static bech32Decode(address: string) {
-    return Address.fromBech32(address).hex();
+    return Address.newFromBech32(address).hex();
   }
 
   static isAddressValid(address: string): boolean {
     try {
-      Address.fromBech32(address);
+      Address.newFromBech32(address);
       return true;
     } catch (error) {
       return false;
     }
   }
 
-
   static isValidHexAddress(address: string): boolean {
     try {
-      Address.fromHex(address);
+      Address.newFromHex(address);
       return true;
     } catch (error) {
       return false;
